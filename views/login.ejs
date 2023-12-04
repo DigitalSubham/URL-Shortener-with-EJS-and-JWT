@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        form {
+            padding: 10px;
+        }
+
+        button {
+            margin-left: 10px;
+        }
+
+        .error {
+            color: red;
+            padding-left: 100px;
+            font-weight: bold;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShortUrl</title>
+</head>
+
+<body>
+    <h1>Login to Url Shortner</h1>
+    <form action="/user/login" method="post">
+        <label for="">Email</label>
+        <input type="text" required name="email">
+        <label for="">Password</label>
+        <input type="text" required name="password">
+        <button type="submit">Login</button>
+    </form>
+    <div class="error">
+        <% if (locals.error) { %>
+            <p>
+                <%= error %>
+            </p>
+            <% } %>
+    </div>
+    <div>
+        <form action="/signup">
+            for SignUp<button type="submit">Click here</button>
+        </form>
+    </div>
+</body>
+
+</html>

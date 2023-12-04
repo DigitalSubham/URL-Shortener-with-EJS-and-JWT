@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        h1 {
+            font-weight: bold;
+            color: green;
+        }
+
+        .form,
+        .short {
+            padding: 5px;
+            padding-bottom: 10px;
+        }
+
+        td {
+            padding: 5px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShortUrl</title>
+</head>
+
+<body>
+
+    <h1><a href="/">Welcome to Url Shortner</a></h1>
+    <div class="form">
+        <form method="POST" action="/url">
+            <label>Enter Your Original Url : </label>
+            <input type="text" name="url" placeholder="https://example.com">
+            <button type="submit">Generate</button>
+        </form>
+    </div>
+    <div class="short">
+        <% if (locals.id) { %>
+            <p>URL Generated: <a target="_blank" href="http://localhost:8000/url/<%=id%>">
+                    <%=id%>
+                </a></p>
+            <% } %>
+    </div>
+    <div>
+        <% if (locals.urls) { %>
+            <table>
+                <thead>
+                    <th>S. NO</th>
+                    <th>ShortID</th>
+                    <th>Redirect</th>
+                    <th>Clicks</th>
+                </thead>
+                <tbody>
+                    <% urls.forEach((url,index)=> { %>
+                        <tr>
+                            <td>
+                                <%= index + 1 %>
+                            </td>
+                            <td>
+                                <%= url.shortId %>
+                            </td>
+                            <td>
+                                <%= url.redirectUrl %>
+                            </td>
+                            <td>
+                                <%= url.visitHistory.length %>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+            <% } %>
+    </div>
+
+</body>
+
+</html>
